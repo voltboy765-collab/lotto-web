@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 1등 시뮬레이터 - 당첨될 때까지 얼마나?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>🎰 로또 1등 시뮬레이터</h1>
+        <p>매주 5장씩 구매하면 얼마나 걸릴까요?</p>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Info Section -->
+        <section class="info-box">
+            <h3>📋 시뮬레이션 방식</h3>
+            <p>매주 <strong>5장의 로또</strong>를 구매하고, <strong>1개의 당첨번호</strong>와 비교합니다.</p>
+            <p>6개 숫자가 모두 일치하면 <strong>1등 당첨!</strong></p>
+        </section>
+
+        <!-- Simulator Box -->
+        <section class="simulator-box">
+            <!-- Status Display -->
+            <div class="status-display">
+                <div class="stat-item">
+                    <div class="stat-label">시도한 주</div>
+                    <div class="stat-value" id="weeks">0</div>
+                    <div class="stat-sub">주차</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">구매한 로또</div>
+                    <div class="stat-value" id="tickets">0</div>
+                    <div class="stat-sub">장</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">총 비용</div>
+                    <div class="stat-value" id="cost">0</div>
+                    <div class="stat-sub">원</div>
+                </div>
+            </div>
+
+            <!-- Winning Numbers -->
+            <div class="numbers-section">
+                <h4>🎯 이번 주 당첨번호</h4>
+                <div class="lotto-balls" id="winningNumbers">
+                    <div class="ball">?</div>
+                    <div class="ball">?</div>
+                    <div class="ball">?</div>
+                    <div class="ball">?</div>
+                    <div class="ball">?</div>
+                    <div class="ball">?</div>
+                </div>
+            </div>
+
+            <!-- Current Trying Numbers -->
+            <div class="numbers-section">
+                <h4>🎲 지금 시도 중인 번호</h4>
+                <div class="lotto-balls" id="currentNumbers">
+                    <div class="ball">-</div>
+                    <div class="ball">-</div>
+                    <div class="ball">-</div>
+                    <div class="ball">-</div>
+                    <div class="ball">-</div>
+                    <div class="ball">-</div>
+                </div>
+                <div class="try-counter" id="tryCounter">5장 중 1번째 시도</div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="btn btn-primary btn-large" id="startBtn">
+                    🎰 시작하기
+                </button>
+                
+                <div class="speed-controls" id="speedControls" style="display: none;">
+                    <button class="btn btn-speed" data-speed="slow">🐢 느리게</button>
+                    <button class="btn btn-speed active" data-speed="normal">🚶 보통</button>
+                    <button class="btn btn-speed" data-speed="fast">🚀 빠르게</button>
+                </div>
+
+                <button class="btn btn-secondary" id="pauseBtn" style="display: none;">
+                    ⏸️ 일시정지
+                </button>
+            </div>
+        </section>
+
+        <!-- Result Section (Hidden by default) -->
+        <section class="result-box" id="resultBox" style="display: none;">
+            <div class="result-header">
+                <h2>🎉 축하합니다!</h2>
+                <p class="result-message" id="resultMessage"></p>
+            </div>
+
+            <div class="result-numbers">
+                <h4>당첨 번호</h4>
+                <div class="lotto-balls winning" id="resultNumbers"></div>
+            </div>
+
+            <div class="result-stats">
+                <div class="result-stat-item">
+                    <div class="result-stat-label">총 시도 주수</div>
+                    <div class="result-stat-value" id="resultWeeks">0</div>
+                </div>
+                <div class="result-stat-item">
+                    <div class="result-stat-label">구매한 로또</div>
+                    <div class="result-stat-value" id="resultTickets">0</div>
+                </div>
+                <div class="result-stat-item">
+                    <div class="result-stat-label">총 구매 비용</div>
+                    <div class="result-stat-value highlight" id="resultCost">0</div>
+                </div>
+                <div class="result-stat-item">
+                    <div class="result-stat-label">소요 시간</div>
+                    <div class="result-stat-value" id="resultTime">0</div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="restartBtn">
+                🔄 다시 시도하기
+            </button>
+        </section>
+
+        <!-- Fun Facts -->
+        <section class="facts-box">
+            <h3>💡 알고 계셨나요?</h3>
+            <div class="fact-item">
+                <strong>로또 1등 확률:</strong> 1/8,145,060 (0.000012%)
+            </div>
+            <div class="fact-item">
+                <strong>벼락 맞을 확률:</strong> 1/280,000 (0.00036%)
+                <br><span class="fact-highlight">→ 로또 당첨보다 벼락 맞을 확률이 29배 높습니다!</span>
+            </div>
+            <div class="fact-item">
+                <strong>매주 1장씩 평생(80년) 구매:</strong> 약 0.5% 확률
+                <br><span class="fact-highlight">→ 200명 중 1명만 평생에 한 번 당첨됩니다.</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>⚠️ 이 사이트는 교육 목적의 시뮬레이터입니다. 실제 로또 구매를 권장하지 않습니다.</p>
+        <p class="footer-help">도박 문제 상담: <strong>1336</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

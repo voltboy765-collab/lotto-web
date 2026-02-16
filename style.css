@@ -1,0 +1,530 @@
+/* ===================================
+   전역 설정
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #667eea;
+    --primary-dark: #5568d3;
+    --secondary-color: #764ba2;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* ===================================
+   헤더
+   =================================== */
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* ===================================
+   컨테이너
+   =================================== */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   공통 섹션 스타일
+   =================================== */
+section {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 0.8s ease;
+}
+
+section h3 {
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+section h4 {
+    color: var(--text-gray);
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ===================================
+   안내 박스
+   =================================== */
+.info-box {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+    border-left: 4px solid var(--primary-color);
+}
+
+.info-box p {
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+/* ===================================
+   시뮬레이터 박스
+   =================================== */
+.simulator-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+}
+
+/* 상태 표시 */
+.status-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.stat-sub {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* 번호 섹션 */
+.numbers-section {
+    margin-bottom: 24px;
+}
+
+.numbers-section h4 {
+    color: white;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* 로또 공 */
+.lotto-balls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.ball:hover {
+    transform: scale(1.1);
+}
+
+/* 당첨 번호 (금색) */
+.lotto-balls.winning .ball {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #854d0e;
+    border: 3px solid #f59e0b;
+}
+
+.try-counter {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+/* ===================================
+   버튼
+   =================================== */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #059669;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-light);
+}
+
+.btn-large {
+    padding: 18px 32px;
+    font-size: 1.2rem;
+}
+
+/* 속도 조절 버튼 */
+.speed-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-speed {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+}
+
+.btn-speed:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-speed.active {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* ===================================
+   결과 박스
+   =================================== */
+.result-box {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    text-align: center;
+}
+
+.result-header h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.result-message {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+    opacity: 0.95;
+}
+
+.result-numbers {
+    margin: 24px 0;
+}
+
+.result-numbers h4 {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.result-stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.result-stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.result-stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.result-stat-value.highlight {
+    color: #fef08a;
+}
+
+/* ===================================
+   재미있는 정보
+   =================================== */
+.facts-box {
+    background: #fffbeb;
+    border-left: 4px solid var(--warning-color);
+}
+
+.fact-item {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+}
+
+.fact-item:last-child {
+    margin-bottom: 0;
+}
+
+.fact-highlight {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+/* ===================================
+   푸터
+   =================================== */
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    padding: 20px;
+    opacity: 0.9;
+}
+
+.footer p {
+    margin-bottom: 8px;
+}
+
+.footer-help {
+    font-size: 1.1rem;
+}
+
+/* ===================================
+   애니메이션
+   =================================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.ball.matching {
+    animation: pulse 0.5s ease infinite;
+}
+
+/* ===================================
+   모바일 반응형 (768px 이하)
+   =================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    /* 상태 표시 */
+    .status-display {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    /* 로또 공 */
+    .ball {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    /* 버튼 */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+
+    .btn-large {
+        padding: 16px 28px;
+        font-size: 1.1rem;
+    }
+
+    .btn-speed {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+
+    /* 결과 통계 */
+    .result-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .result-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .result-message {
+        font-size: 1rem;
+    }
+
+    .result-stat-value {
+        font-size: 1.3rem;
+    }
+}
+
+/* ===================================
+   작은 모바일 (480px 이하)
+   =================================== */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 16px;
+    }
+
+    .ball {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .lotto-balls {
+        gap: 6px;
+    }
+
+    .speed-controls {
+        flex-direction: column;
+    }
+
+    .btn-speed {
+        width: 100%;
+    }
+}
+
+/* ===================================
+   인쇄 스타일 (선택사항)
+   =================================== */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .controls,
+    .speed-controls,
+    .footer {
+        display: none;
+    }
+}
